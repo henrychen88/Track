@@ -14,6 +14,19 @@
 		BAEC710E1B67544100AE1CFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAEC710D1B67544100AE1CFA /* Images.xcassets */; };
 		BAEC71111B67544100AE1CFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAEC710F1B67544100AE1CFA /* LaunchScreen.xib */; };
 		BAEC711D1B67544100AE1CFA /* TrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC711C1B67544100AE1CFA /* TrackTests.m */; };
+		BAEC712B1B67559300AE1CFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC712A1B67559300AE1CFA /* UIKit.framework */; };
+		BAEC712D1B67559A00AE1CFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC712C1B67559A00AE1CFA /* Foundation.framework */; };
+		BAEC712F1B6755A300AE1CFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC712E1B6755A300AE1CFA /* CoreGraphics.framework */; };
+		BAEC71311B6755AB00AE1CFA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71301B6755AB00AE1CFA /* QuartzCore.framework */; };
+		BAEC71331B6755B200AE1CFA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71321B6755B200AE1CFA /* OpenGLES.framework */; };
+		BAEC71351B6755B800AE1CFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71341B6755B800AE1CFA /* CoreLocation.framework */; };
+		BAEC71371B6755BF00AE1CFA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71361B6755BF00AE1CFA /* CoreTelephony.framework */; };
+		BAEC71391B6755CE00AE1CFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71381B6755CE00AE1CFA /* SystemConfiguration.framework */; };
+		BAEC713B1B6755D800AE1CFA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC713A1B6755D800AE1CFA /* libz.dylib */; };
+		BAEC713D1B6755E100AE1CFA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC713C1B6755E100AE1CFA /* libstdc++.6.0.9.dylib */; };
+		BAEC713F1B6755E700AE1CFA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC713E1B6755E700AE1CFA /* Security.framework */; };
+		BAEC71421B6760C800AE1CFA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */; };
+		BAEC71441B6761CF00AE1CFA /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEC71431B6761CF00AE1CFA /* AMap.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +53,19 @@
 		BAEC71161B67544100AE1CFA /* TrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC711B1B67544100AE1CFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAEC711C1B67544100AE1CFA /* TrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackTests.m; sourceTree = "<group>"; };
+		BAEC712A1B67559300AE1CFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BAEC712C1B67559A00AE1CFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BAEC712E1B6755A300AE1CFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BAEC71301B6755AB00AE1CFA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BAEC71321B6755B200AE1CFA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BAEC71341B6755B800AE1CFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BAEC71361B6755BF00AE1CFA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BAEC71381B6755CE00AE1CFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BAEC713A1B6755D800AE1CFA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BAEC713C1B6755E100AE1CFA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		BAEC713E1B6755E700AE1CFA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		BAEC71431B6761CF00AE1CFA /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +73,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAEC71421B6760C800AE1CFA /* MAMapKit.framework in Frameworks */,
+				BAEC713F1B6755E700AE1CFA /* Security.framework in Frameworks */,
+				BAEC713D1B6755E100AE1CFA /* libstdc++.6.0.9.dylib in Frameworks */,
+				BAEC713B1B6755D800AE1CFA /* libz.dylib in Frameworks */,
+				BAEC71391B6755CE00AE1CFA /* SystemConfiguration.framework in Frameworks */,
+				BAEC71371B6755BF00AE1CFA /* CoreTelephony.framework in Frameworks */,
+				BAEC71351B6755B800AE1CFA /* CoreLocation.framework in Frameworks */,
+				BAEC71331B6755B200AE1CFA /* OpenGLES.framework in Frameworks */,
+				BAEC71311B6755AB00AE1CFA /* QuartzCore.framework in Frameworks */,
+				BAEC712F1B6755A300AE1CFA /* CoreGraphics.framework in Frameworks */,
+				BAEC712D1B67559A00AE1CFA /* Foundation.framework in Frameworks */,
+				BAEC712B1B67559300AE1CFA /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +101,17 @@
 		BAEC70F41B67544100AE1CFA = {
 			isa = PBXGroup;
 			children = (
+				BAEC713E1B6755E700AE1CFA /* Security.framework */,
+				BAEC713C1B6755E100AE1CFA /* libstdc++.6.0.9.dylib */,
+				BAEC713A1B6755D800AE1CFA /* libz.dylib */,
+				BAEC71381B6755CE00AE1CFA /* SystemConfiguration.framework */,
+				BAEC71361B6755BF00AE1CFA /* CoreTelephony.framework */,
+				BAEC71341B6755B800AE1CFA /* CoreLocation.framework */,
+				BAEC71321B6755B200AE1CFA /* OpenGLES.framework */,
+				BAEC71301B6755AB00AE1CFA /* QuartzCore.framework */,
+				BAEC712E1B6755A300AE1CFA /* CoreGraphics.framework */,
+				BAEC712C1B67559A00AE1CFA /* Foundation.framework */,
+				BAEC712A1B67559300AE1CFA /* UIKit.framework */,
 				BAEC70FF1B67544100AE1CFA /* Track */,
 				BAEC71191B67544100AE1CFA /* TrackTests */,
 				BAEC70FE1B67544100AE1CFA /* Products */,
@@ -81,6 +130,8 @@
 		BAEC70FF1B67544100AE1CFA /* Track */ = {
 			isa = PBXGroup;
 			children = (
+				BAEC71431B6761CF00AE1CFA /* AMap.bundle */,
+				BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */,
 				BAEC71041B67544100AE1CFA /* AppDelegate.h */,
 				BAEC71051B67544100AE1CFA /* AppDelegate.m */,
 				BAEC71071B67544100AE1CFA /* ViewController.h */,
@@ -168,6 +219,11 @@
 				TargetAttributes = {
 					BAEC70FC1B67544100AE1CFA = {
 						CreatedOnToolsVersion = 6.3.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BAEC71151B67544100AE1CFA = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -201,6 +257,7 @@
 			files = (
 				BAEC710C1B67544100AE1CFA /* Main.storyboard in Resources */,
 				BAEC71111B67544100AE1CFA /* LaunchScreen.xib in Resources */,
+				BAEC71441B6761CF00AE1CFA /* AMap.bundle in Resources */,
 				BAEC710E1B67544100AE1CFA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,8 +404,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/henry/Downloads,
+					"$(PROJECT_DIR)/Track",
+				);
 				INFOPLIST_FILE = Track/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -357,8 +420,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/henry/Downloads,
+					"$(PROJECT_DIR)/Track",
+				);
 				INFOPLIST_FILE = Track/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -416,6 +485,7 @@
 				BAEC71221B67544100AE1CFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BAEC71231B67544100AE1CFA /* Build configuration list for PBXNativeTarget "TrackTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +494,7 @@
 				BAEC71251B67544100AE1CFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
