@@ -42,7 +42,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    _mapView.showsUserLocation = YES;
+    _mapView.showsUserLocation = YES;
     
     [self addLines];
 }
@@ -58,10 +58,11 @@
             self.initialized = YES;
         }
         
+        
         if ([self shoulAddCurrentLocation:userLocation]) {
             NSDictionary *dict = @{@"lat" : [NSNumber numberWithDouble:userLocation.coordinate.latitude] , @"long" : [NSNumber numberWithDouble:userLocation.coordinate.longitude]};
             [self.locations addObject:dict];
-            if (self.locations.count == 1000) {
+            if (self.locations.count == 600) {
                 self.mapView.showsUserLocation = NO;
                 
                 [[NSUserDefaults standardUserDefaults] setObject:self.locations forKey:@"locations"];
@@ -85,7 +86,7 @@
         CLLocationDegrees currentLat = currentLocation.coordinate.latitude;
         CLLocationDegrees currentLong = currentLocation.coordinate.longitude;
         
-        if ((fabs(currentLat - preLat) > 0.00001) || ((fabs(currentLong - preLong)) > 0.00001)) {
+        if ((fabs(currentLat - preLat) > 0.00002) || ((fabs(currentLong - preLong)) > 0.00002)) {
             return YES;
         }
     }
