@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B6966271CD2C3C1413C6C96E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDE4B71FD6EDC3E1B7BE80E /* libPods.a */; };
+		BA25D20B1B692A5900205ACB /* Riding.m in Sources */ = {isa = PBXBuildFile; fileRef = BA25D20A1B692A5900205ACB /* Riding.m */; };
 		BAA9FD901B68DA010098935C /* FMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9FD8F1B68DA010098935C /* FMDBHelper.m */; };
 		BAEC71031B67544100AE1CFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC71021B67544100AE1CFA /* main.m */; };
 		BAEC71061B67544100AE1CFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC71051B67544100AE1CFA /* AppDelegate.m */; };
@@ -45,6 +46,8 @@
 		0EDE4B71FD6EDC3E1B7BE80E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B41C9B8424837C29C4C913E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6971071EE012F3637C76B5A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BA25D2091B692A5900205ACB /* Riding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Riding.h; sourceTree = "<group>"; };
+		BA25D20A1B692A5900205ACB /* Riding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Riding.m; sourceTree = "<group>"; };
 		BAA9FD8E1B68DA010098935C /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		BAA9FD8F1B68DA010098935C /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		BAEC70FD1B67544100AE1CFA /* Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Track.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +143,8 @@
 		BAEC70FF1B67544100AE1CFA /* Track */ = {
 			isa = PBXGroup;
 			children = (
+				BA25D2091B692A5900205ACB /* Riding.h */,
+				BA25D20A1B692A5900205ACB /* Riding.m */,
 				BAEC71431B6761CF00AE1CFA /* AMap.bundle */,
 				BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */,
 				BAEC71041B67544100AE1CFA /* AppDelegate.h */,
@@ -340,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA25D20B1B692A5900205ACB /* Riding.m in Sources */,
 				BAA9FD901B68DA010098935C /* FMDBHelper.m in Sources */,
 				BAEC71091B67544100AE1CFA /* ViewController.m in Sources */,
 				BAEC71061B67544100AE1CFA /* AppDelegate.m in Sources */,
@@ -477,7 +483,10 @@
 				);
 				INFOPLIST_FILE = Track/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -494,7 +503,10 @@
 				);
 				INFOPLIST_FILE = Track/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

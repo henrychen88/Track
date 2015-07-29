@@ -8,13 +8,17 @@
 
 #import "FMDBHelper.h"
 
+#import <FMDB/FMDB.h>
+
+#import "Riding.h"
+
 #define     DOCUMENT_PATH       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
-const static NSString *tableName = @"person";
+const static NSString *tableName = @"riding";
 
 @implementation FMDBHelper
 
-/*
+
 - (BOOL)isDataBaseExist
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -29,7 +33,7 @@ const static NSString *tableName = @"person";
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
     if ([db open]) {
-        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE '%@' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'name' TEXT, 'age' TEXT)",tableName];
+        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE '%@' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'starttime' TEXT, 'alltime' TEXT, 'resttime' TEXT, 'locations' blob)",tableName];
         if ([db executeUpdate:sql]) {
             NSLog(@"CREATE TABLE SUCCESS");
             [db close];
@@ -45,12 +49,13 @@ const static NSString *tableName = @"person";
     return NO;
 }
 
-- (BOOL)insertSinleData:(Person *)person
+- (BOOL)insertSinleData:(Riding *)riding
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
     if ([db open]) {
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (name,age) values(?,?)",tableName];
-        if ([db executeUpdate:sql,person.name,person.age]) {
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (starttime,alltime,resttime,locations) values(?,?,?,?)",tableName];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:riding.locations];
+        if ([db executeUpdate:sql,riding.date ,riding.allTime, riding.restTime, data]) {
             [db close];
             return YES;
         }else{
@@ -61,37 +66,39 @@ const static NSString *tableName = @"person";
     return NO;
 }
 
-- (BOOL)insertMultiData:(NSArray *)lists
-{
-    FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
-    if ([db open]) {
-        [db beginTransaction];
-        BOOL isRollBack = NO;
-        NSInteger length = [lists count];
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (name,age) values(?,?)",tableName];
-        @try {
-            for (int i = 0; i < length; i++) {
-                Person *person = [lists objectAtIndex:i];
-                if (![db executeUpdate:sql,person.name,person.age]) {
-                    NSLog(@"INSERT MULTI DATA FAILED");
-                }
-            }
-        }
-        @catch (NSException *exception) {
-            isRollBack = YES;
-            [db rollback];
-            NSLog(@"ROLLBACK WHEN INSERT MULTI DATA");
-        }
-        @finally {
-            if (!isRollBack) {
-                [db commit];
-            }
-        }
-        [db close];
-        return !isRollBack;
-    }
-    return NO;
-}
+/*
+ - (BOOL)insertMultiData:(NSArray *)lists
+ {
+ FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
+ if ([db open]) {
+ [db beginTransaction];
+ BOOL isRollBack = NO;
+ NSInteger length = [lists count];
+ NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (name,age) values(?,?)",tableName];
+ @try {
+ for (int i = 0; i < length; i++) {
+ Person *person = [lists objectAtIndex:i];
+ if (![db executeUpdate:sql,person.name,person.age]) {
+ NSLog(@"INSERT MULTI DATA FAILED");
+ }
+ }
+ }
+ @catch (NSException *exception) {
+ isRollBack = YES;
+ [db rollback];
+ NSLog(@"ROLLBACK WHEN INSERT MULTI DATA");
+ }
+ @finally {
+ if (!isRollBack) {
+ [db commit];
+ }
+ }
+ [db close];
+ return !isRollBack;
+ }
+ return NO;
+ }
+ */
 
 - (NSMutableArray *)queryData
 {
@@ -101,12 +108,15 @@ const static NSString *tableName = @"person";
         FMResultSet *rs = [db executeQuery:sql];
         NSMutableArray *lists = [[NSMutableArray alloc]init];
         while ([rs next]) {
-            Person *person = [[Person alloc]init];
+            Riding *riding = [[Riding alloc]init];
             
-            person.name = [rs stringForColumn:@"name"];
-            person.age  = [rs stringForColumn:@"age"];
+            riding.date = [rs stringForColumn:@"starttime"];
+            riding.allTime  = [rs stringForColumn:@"alltime"];
+            riding.restTime = [rs stringForColumn:@"alltime"];
             
-            [lists addObject:person];
+            NSData *data = [rs dataForColumn:@"locations"];
+            riding.locations = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [lists addObject:riding];
         }
         
         [db close];
@@ -165,6 +175,5 @@ const static NSString *tableName = @"person";
 {
     return [DOCUMENT_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",tableName]];
 }
-*/
 @end
 

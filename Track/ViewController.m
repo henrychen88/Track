@@ -10,11 +10,23 @@
 
 #import <MAMapKit/MAMapKit.h>
 
+#import "Riding.h"
+
+#import "FMDBHelper.h"
+
+#define width   [UIScreen mainScreen].bounds.size.width
+#define height  [UIScreen mainScreen].bounds.size.height
+
 @interface ViewController ()<MAMapViewDelegate>
 @property(nonatomic, strong) MAMapView *mapView;
 @property(nonatomic, getter = isInitalized) BOOL initialized;
+@property(nonatomic, getter = isStated) BOOL started;
 @property(nonatomic, strong) NSMutableArray *locations;
 @property(nonatomic, strong) MAUserLocation *previousLocation;
+@property(nonatomic, strong) UIButton *startButton;
+@property(nonatomic, copy) NSString *startTime;
+@property(nonatomic, assign) NSInteger allTime, restTime;
+@property(nonatomic, strong) FMDBHelper *fmdbHelper;
 @end
 
 @implementation ViewController
@@ -29,14 +41,71 @@
     [self.view addSubview:_mapView];
     
     self.locations = [NSMutableArray new];
+    [self.fmdbHelper createTable];
+    Riding *riding = [Riding new];
+    riding.date = @"2015-7-28 15:30";
+    riding.allTime = [NSString stringWithFormat:@"%d", 1000];
+    riding.restTime = [NSString stringWithFormat:@"%d", 400];
+    riding.locations = self.locations;
+//    [self.fmdbHelper insertSinleData:riding];
+    
+    NSLog(@"xxx : %@", [self.fmdbHelper queryData]);
     
     //程序将要退出的时候，保存当前记录的数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate) name:@"applicationWillTerminate" object:nil];
+    
+    CGFloat buttonSize = 100;
+    self.startButton = [[UIButton alloc]initWithFrame:CGRectMake((width - buttonSize) / 2.0f, height - buttonSize - 50, buttonSize, buttonSize)];
+    self.startButton.layer.masksToBounds = YES;
+    self.startButton.layer.cornerRadius= buttonSize / 2.0f;
+    self.startButton.backgroundColor = [UIColor greenColor];
+    [self.startButton.titleLabel setFont:[UIFont boldSystemFontOfSize:25]];
+    [self.startButton setTitle:@"开始" forState:UIControlStateNormal];
+    [self.startButton addTarget:self action:@selector(startButtonAct) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.startButton];
+}
+
+- (void)startButtonAct
+{
+    if (!self.isStated) {
+        self.startTime = [self currentTime];
+        self.allTime = 0;
+        self.restTime = 0;
+        self.started = YES;
+    }else{
+        
+    }
+}
+
+- (void)setStarted:(BOOL)started
+{
+    _started = started;
+    [self.startButton setTitle:(started ? @"结束" : @"开始") forState:UIControlStateNormal];
+    [self.startButton setBackgroundColor:(started ? [UIColor redColor] : [UIColor greenColor])];
+}
+
+- (FMDBHelper *)fmdbHelper
+{
+    if (!_fmdbHelper) {
+        _fmdbHelper = [[FMDBHelper alloc]init];
+    }
+    return _fmdbHelper;
+}
+
+- (NSString *)currentTime
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"yyy-MM-dd HH:mm";
+    return [formatter stringFromDate:[NSDate date]];
 }
 
 - (void)appWillTerminate
 {
-    
+    Riding *riding = [[Riding alloc]init];
+    riding.date = self.startTime;
+    riding.allTime = [NSString stringWithFormat:@"%ld", (long)self.allTime];
+    riding.restTime = [NSString stringWithFormat:@"%ld", (long)self.restTime];
+    riding.locations = self.locations;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,9 +127,16 @@
             self.initialized = YES;
         }
         
+        if (!self.isStated) {
+            return;
+        }
         
         if ([self shoulAddCurrentLocation:userLocation]) {
-            NSDictionary *dict = @{@"lat" : [NSNumber numberWithDouble:userLocation.coordinate.latitude] , @"long" : [NSNumber numberWithDouble:userLocation.coordinate.longitude]};
+            NSDictionary *dict = @{
+                                   @"lat" : [NSNumber numberWithDouble:userLocation.coordinate.latitude] ,
+                                   @"long" : [NSNumber numberWithDouble:userLocation.coordinate.longitude],
+                                   @"timestamp" : [NSNumber numberWithInteger:[[NSDate date] timeIntervalSince1970]]
+                                   };
             [self.locations addObject:dict];
             if (self.locations.count == 600) {
                 self.mapView.showsUserLocation = NO;
@@ -75,6 +151,11 @@
     }
 }
 
+- (void)endTracking
+{
+    
+}
+
 - (BOOL)shoulAddCurrentLocation:(MAUserLocation *)currentLocation
 {
     if (!self.previousLocation) {
@@ -86,7 +167,7 @@
         CLLocationDegrees currentLat = currentLocation.coordinate.latitude;
         CLLocationDegrees currentLong = currentLocation.coordinate.longitude;
         
-        if ((fabs(currentLat - preLat) > 0.00002) || ((fabs(currentLong - preLong)) > 0.00002)) {
+        if ((fabs(currentLat - preLat) > 0.000015) || ((fabs(currentLong - preLong)) > 0.000015)) {
             return YES;
         }
     }
@@ -139,7 +220,7 @@
 
 - (void)showCurrentLocation
 {
-//    MATileOverlay 
+    //    MATileOverlay
 }
 
 @end

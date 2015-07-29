@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class Riding;
+
 @interface FMDBHelper : NSObject
 
 - (BOOL)isDataBaseExist;
 
 - (BOOL)createTable;
 
-//- (BOOL)insertSinleData:(Person *)person;
+- (BOOL)insertSinleData:(Riding *)riding;
 
-- (BOOL)insertMultiData:(NSArray *)lists;
+//- (BOOL)insertMultiData:(NSArray *)lists;
 
 - (NSMutableArray *)queryData;
 
