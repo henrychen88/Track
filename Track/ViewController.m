@@ -29,12 +29,20 @@
     [self.view addSubview:_mapView];
     
     self.locations = [NSMutableArray new];
+    
+    //程序将要退出的时候，保存当前记录的数据
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate) name:@"applicationWillTerminate" object:nil];
+}
+
+- (void)appWillTerminate
+{
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    _mapView.showsUserLocation = YES;
+//    _mapView.showsUserLocation = YES;
     
     [self addLines];
 }
@@ -53,7 +61,7 @@
         if ([self shoulAddCurrentLocation:userLocation]) {
             NSDictionary *dict = @{@"lat" : [NSNumber numberWithDouble:userLocation.coordinate.latitude] , @"long" : [NSNumber numberWithDouble:userLocation.coordinate.longitude]};
             [self.locations addObject:dict];
-            if (self.locations.count == 10) {
+            if (self.locations.count == 1000) {
                 self.mapView.showsUserLocation = NO;
                 
                 [[NSUserDefaults standardUserDefaults] setObject:self.locations forKey:@"locations"];
@@ -81,7 +89,7 @@
             return YES;
         }
     }
-    return YES;
+    return NO;
 }
 
 - (void)mapViewDidStopLocatingUser:(MAMapView *)mapView
@@ -119,8 +127,8 @@
     if ([overlay isKindOfClass:[MAPolyline class]]) {
         MAPolylineView * polylineView = [[MAPolylineView alloc]initWithPolyline:overlay];
         
-        polylineView.lineWidth = 10.f;
-        polylineView.strokeColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
+        polylineView.lineWidth = 7.f;
+        polylineView.strokeColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:1];
         polylineView.lineJoinType = kMALineJoinRound;
         polylineView.lineCapType = kMALineCapRound;
         return polylineView;
