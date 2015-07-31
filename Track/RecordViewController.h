@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  RecordViewController.h
 //  Track
 //
-//  Created by Henry on 15/7/28.
+//  Created by Henry on 15/7/31.
 //  Copyright (c) 2015年 Henry. All rights reserved.
 //
 
@@ -10,8 +10,6 @@
 
 #import "BaseTitleViewController.h"
 
-@interface ViewController : BaseTitleViewController
-
+@interface RecordViewController : BaseTitleViewController
 
 @end
-

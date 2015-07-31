@@ -11,7 +11,7 @@
 @implementation Riding
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"startTime : %@ data : %@", self.date, self.locations];
+    return [NSString stringWithFormat:@"id  : %d startTime : %@ data : %@", self.rid, self.date, self.locations];
 }
 
 @end

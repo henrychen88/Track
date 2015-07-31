@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B6966271CD2C3C1413C6C96E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDE4B71FD6EDC3E1B7BE80E /* libPods.a */; };
 		BA25D20B1B692A5900205ACB /* Riding.m in Sources */ = {isa = PBXBuildFile; fileRef = BA25D20A1B692A5900205ACB /* Riding.m */; };
+		BA6FA7D51B6B688400CA122E /* BaseTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6FA7D41B6B688400CA122E /* BaseTitleViewController.m */; };
+		BA6FA7D81B6B709700CA122E /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6FA7D71B6B709700CA122E /* RecordViewController.m */; };
 		BAA9FD901B68DA010098935C /* FMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9FD8F1B68DA010098935C /* FMDBHelper.m */; };
 		BAEC71031B67544100AE1CFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC71021B67544100AE1CFA /* main.m */; };
 		BAEC71061B67544100AE1CFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC71051B67544100AE1CFA /* AppDelegate.m */; };
@@ -48,6 +50,10 @@
 		6971071EE012F3637C76B5A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BA25D2091B692A5900205ACB /* Riding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Riding.h; sourceTree = "<group>"; };
 		BA25D20A1B692A5900205ACB /* Riding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Riding.m; sourceTree = "<group>"; };
+		BA6FA7D31B6B688400CA122E /* BaseTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTitleViewController.h; sourceTree = "<group>"; };
+		BA6FA7D41B6B688400CA122E /* BaseTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTitleViewController.m; sourceTree = "<group>"; };
+		BA6FA7D61B6B709700CA122E /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		BA6FA7D71B6B709700CA122E /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		BAA9FD8E1B68DA010098935C /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		BAA9FD8F1B68DA010098935C /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		BAEC70FD1B67544100AE1CFA /* Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Track.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +163,10 @@
 				BAEC71001B67544100AE1CFA /* Supporting Files */,
 				BAA9FD8E1B68DA010098935C /* FMDBHelper.h */,
 				BAA9FD8F1B68DA010098935C /* FMDBHelper.m */,
+				BA6FA7D31B6B688400CA122E /* BaseTitleViewController.h */,
+				BA6FA7D41B6B688400CA122E /* BaseTitleViewController.m */,
+				BA6FA7D61B6B709700CA122E /* RecordViewController.h */,
+				BA6FA7D71B6B709700CA122E /* RecordViewController.m */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -349,6 +359,8 @@
 				BAA9FD901B68DA010098935C /* FMDBHelper.m in Sources */,
 				BAEC71091B67544100AE1CFA /* ViewController.m in Sources */,
 				BAEC71061B67544100AE1CFA /* AppDelegate.m in Sources */,
+				BA6FA7D51B6B688400CA122E /* BaseTitleViewController.m in Sources */,
+				BA6FA7D81B6B709700CA122E /* RecordViewController.m in Sources */,
 				BAEC71031B67544100AE1CFA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

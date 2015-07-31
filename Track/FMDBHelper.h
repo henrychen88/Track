@@ -12,6 +12,8 @@
 
 @interface FMDBHelper : NSObject
 
++ (FMDBHelper *)instance;
+
 - (BOOL)isDataBaseExist;
 
 - (BOOL)createTable;
@@ -22,7 +24,7 @@
 
 - (NSMutableArray *)queryData;
 
-- (BOOL)deleteByName:(NSString *)name;
+- (BOOL)deleteByID:(NSInteger)rid;
 
 - (BOOL)deleteAll;
 

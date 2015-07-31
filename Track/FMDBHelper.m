@@ -18,6 +18,16 @@ const static NSString *tableName = @"riding";
 
 @implementation FMDBHelper
 
++ (FMDBHelper *)instance
+{
+    static dispatch_once_t onceToken;
+    static FMDBHelper *instance;
+    dispatch_once(&onceToken, ^{
+        instance = [[FMDBHelper alloc]init];
+    });
+    return instance;
+}
+
 
 - (BOOL)isDataBaseExist
 {
@@ -109,7 +119,7 @@ const static NSString *tableName = @"riding";
         NSMutableArray *lists = [[NSMutableArray alloc]init];
         while ([rs next]) {
             Riding *riding = [[Riding alloc]init];
-            
+            riding.rid = [rs intForColumnIndex:0];
             riding.date = [rs stringForColumn:@"starttime"];
             riding.allTime  = [rs stringForColumn:@"alltime"];
             riding.restTime = [rs stringForColumn:@"alltime"];
@@ -125,12 +135,12 @@ const static NSString *tableName = @"riding";
     return nil;
 }
 
-- (BOOL)deleteByName:(NSString *)name
+- (BOOL)deleteByID:(NSInteger)rid
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
     if ([db open]) {
-        NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE name = ?",tableName];
-        if ([db executeUpdate:sql,name]) {
+        NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = ?",tableName];
+        if ([db executeUpdate:sql,rid]) {
             [db close];
             return YES;
         }else{

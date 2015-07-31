@@ -15,7 +15,7 @@
 /**
  *  id
  */
-@property(nonatomic, strong) NSString *rid;
+@property(nonatomic, assign) NSInteger rid;
 /**
  *  骑行开始日期
  */
