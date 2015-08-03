@@ -67,6 +67,7 @@ const static NSString *tableName = @"riding";
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:riding.locations];
         if ([db executeUpdate:sql,riding.date ,riding.allTime, riding.restTime, data]) {
             [db close];
+            NSLog(@"数据插入成功");
             return YES;
         }else{
             [db close];
@@ -140,8 +141,9 @@ const static NSString *tableName = @"riding";
     FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
     if ([db open]) {
         NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = ?",tableName];
-        if ([db executeUpdate:sql,rid]) {
+        if ([db executeUpdate:sql,[NSNumber numberWithInteger:rid]]) {
             [db close];
+            NSLog(@"删除成功");
             return YES;
         }else{
             [db close];

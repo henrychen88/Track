@@ -27,6 +27,7 @@
 - (void)setupContent{
     [self.topView addSubview:self.titleLabel];
     [self.topView addSubview:self.rightButton];
+    [self.topView addSubview:self.leftButton];
     
     [self.view addSubview:self.topView];
     [self.view addSubview:self.contentView];
@@ -67,7 +68,21 @@
     return _rightButton;
 }
 
+- (UIButton *)leftButton
+{
+    if (!_leftButton) {
+        _leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 50, CGRectGetHeight(self.titleLabel.frame))];
+        [_leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _leftButton;
+}
+
 - (void)rightButtonAction:(UIButton *)button
+{
+    
+}
+
+- (void)leftButtonAction:(UIButton *)button
 {
     
 }

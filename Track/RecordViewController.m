@@ -7,7 +7,7 @@
 //
 
 #import "RecordViewController.h"
-
+#import "RecordDetailViewController.h"
 #import "FMDBHelper.h"
 #import "Riding.h"
 
@@ -22,14 +22,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    self.title = @"骑行记录";
     self.records = [[FMDBHelper instance] queryData];
+    [self.leftButton setTitle:@"取消" forState:UIControlStateNormal];
     
     [self.contentView addSubview:self.tableView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)leftButtonAction:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableView *)tableView
@@ -56,6 +59,15 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    RecordDetailViewController *viewController = [[RecordDetailViewController alloc]init];
+    viewController.riding = self.records[indexPath.row];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

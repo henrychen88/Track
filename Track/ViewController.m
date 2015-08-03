@@ -17,7 +17,6 @@
 
 @interface ViewController ()<MAMapViewDelegate>
 @property(nonatomic, strong) MAMapView *mapView;
-@property(nonatomic, getter = isInitalized) BOOL initialized;
 @property(nonatomic, getter = isStated) BOOL started;
 @property(nonatomic, strong) NSMutableArray *locations;
 @property(nonatomic, strong) MAUserLocation *previousLocation;
@@ -63,13 +62,6 @@
     
     //程序将要退出的时候，如果正在记录当前的路径则保存当前记录的数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate) name:@"applicationWillTerminate" object:nil];
-    
-    
-    
-    
-//    NSLog(@"xxx : %@", [self.fmdbHelper queryData]);
-    
-    
 }
 
 - (void)insertRiding
@@ -89,6 +81,7 @@
         self.allTime = 0;
         self.restTime = 0;
         self.started = YES;
+        [self.locations removeAllObjects];
     }else{
         [self endTracking];
     }
@@ -120,7 +113,7 @@
     
     _mapView.showsUserLocation = YES;
     
-    [self addLines];
+//    [self addLines];
 }
 
 - (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
@@ -129,32 +122,24 @@
         NSLog(@"latitude : %f,longitude: %f",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
         [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
         
-        if (!self.isInitalized) {
-            [self.mapView setZoomLevel:17 animated:YES];
-            self.initialized = YES;
-        }
+        [self.mapView setZoomLevel:17 animated:YES];
         
         if (!self.isStated) {
             return;
         }
         
-        if ([self shoulAddCurrentLocation:userLocation]) {
+        
+        self.allTime++;
+        
+        if (YES) {
             NSDictionary *dict = @{
                                    @"lat" : [NSNumber numberWithDouble:userLocation.coordinate.latitude] ,
                                    @"long" : [NSNumber numberWithDouble:userLocation.coordinate.longitude],
                                    @"timestamp" : [NSNumber numberWithInteger:[[NSDate date] timeIntervalSince1970]]
                                    };
             [self.locations addObject:dict];
-            if (self.locations.count == 600) {
-                self.mapView.showsUserLocation = NO;
-                
-                [[NSUserDefaults standardUserDefaults] setObject:self.locations forKey:@"locations"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-            }
-            
-            
+            self.previousLocation = userLocation;
         }
-        self.previousLocation = userLocation;
     }
 }
 
@@ -206,7 +191,7 @@
     if (array.count <= 1) {
         return;
     }else{
-        NSLog(@"array %@", array);
+//        NSLog(@"array %@", array);
     }
     
     NSInteger count = array.count;

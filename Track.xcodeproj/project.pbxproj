@@ -32,6 +32,7 @@
 		BAEC713F1B6755E700AE1CFA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC713E1B6755E700AE1CFA /* Security.framework */; };
 		BAEC71421B6760C800AE1CFA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */; };
 		BAEC71441B6761CF00AE1CFA /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEC71431B6761CF00AE1CFA /* AMap.bundle */; };
+		BAFE83761B6C97BE00CCD36D /* RecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFE83751B6C97BE00CCD36D /* RecordDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		BAEC713E1B6755E700AE1CFA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BAEC71401B6760AD00AE1CFA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		BAEC71431B6761CF00AE1CFA /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
+		BAFE83741B6C97BE00CCD36D /* RecordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailViewController.h; sourceTree = "<group>"; };
+		BAFE83751B6C97BE00CCD36D /* RecordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				BA6FA7D41B6B688400CA122E /* BaseTitleViewController.m */,
 				BA6FA7D61B6B709700CA122E /* RecordViewController.h */,
 				BA6FA7D71B6B709700CA122E /* RecordViewController.m */,
+				BAFE83741B6C97BE00CCD36D /* RecordDetailViewController.h */,
+				BAFE83751B6C97BE00CCD36D /* RecordDetailViewController.m */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFE83761B6C97BE00CCD36D /* RecordDetailViewController.m in Sources */,
 				BA25D20B1B692A5900205ACB /* Riding.m in Sources */,
 				BAA9FD901B68DA010098935C /* FMDBHelper.m in Sources */,
 				BAEC71091B67544100AE1CFA /* ViewController.m in Sources */,

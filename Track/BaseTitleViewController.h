@@ -12,6 +12,8 @@
 
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, strong) UIButton *rightButton;
+
+@property(nonatomic, strong) UIButton *leftButton;
 /* 除去topView用来添加其他子视图的空间 */
 @property(nonatomic, strong, readonly) UIView *contentView;
 
@@ -21,5 +23,7 @@
  *  @param button button description
  */
 - (void)rightButtonAction:(UIButton *)button;
+
+- (void)leftButtonAction:(UIButton *)button;
 
 @end
