@@ -25,20 +25,31 @@
     NSLog(@"interactivePopGestureRecognizer %@", self.navigationController.interactivePopGestureRecognizer);
     NSLog(@"target : %@", self.navigationController.interactivePopGestureRecognizer.delegate);
     
+    [self addFullScrennSlideBack];
+}
+
+- (void)addFullScrennSlideBack
+{
+    // 获取系统自带滑动手势的target对象
     id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    //消除警告
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:target action:@selector(handleNavigationTransition:)];
 #pragma clang diagnostic pop
-
-    
+    // 设置手势代理，拦截手势触发
     panGestureRecognizer.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
     [self.view addGestureRecognizer:panGestureRecognizer];
+    // 禁止使用系统自带的滑动手势
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
     return self.navigationController.viewControllers.count > 1;
 }
 

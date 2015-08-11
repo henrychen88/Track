@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseTitleViewController : UIViewController<UINavigationControllerDelegate>
+@interface BaseTitleViewController : UIViewController
 
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, strong) UIButton *rightButton;
