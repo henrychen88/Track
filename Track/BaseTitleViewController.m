@@ -8,7 +8,7 @@
 
 #import "BaseTitleViewController.h"
 
-@interface BaseTitleViewController ()
+@interface BaseTitleViewController ()<UIGestureRecognizerDelegate>
 @property(nonatomic, strong) UIView *topView;
 @property(nonatomic, strong) UILabel *titleLabel;
 /* 除去topView用来添加其他子视图的空间 */
@@ -22,6 +22,24 @@
     // Do any additional setup after loading the view.
     
     [self setupContent];
+    NSLog(@"interactivePopGestureRecognizer %@", self.navigationController.interactivePopGestureRecognizer);
+    NSLog(@"target : %@", self.navigationController.interactivePopGestureRecognizer.delegate);
+    
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:target action:@selector(handleNavigationTransition:)];
+#pragma clang diagnostic pop
+
+    
+    panGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return self.navigationController.viewControllers.count > 1;
 }
 
 - (void)setupContent{
